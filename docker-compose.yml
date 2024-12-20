@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres
+    container_name: db-feedback
+    ports:
+      - 127.0.0.1:5432:5432
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+volumes:
+  pgdata:
