@@ -4,6 +4,11 @@ import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import config from 'src/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { User } from '../users/entities/user.entity';
+import { Post } from '../feedback-posts/entities/post.entity';
+import { Vote } from '../votes/entities/vote.entity';
+import { Category } from '../categories/entities/category.entity';
+import { Status } from '../statuses/entities/status.entity';
 
 @Module({
   imports: [
@@ -21,8 +26,9 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
         username: configService.get('db_user'),
         password: configService.get('db_password'),
         database: configService.get('db_name'),
-        entities: [],
+        entities: [User, Post, Vote, Category, Status],
         autoLoadEntities: true,
+        synchronize: true,
       }),
     }),
   ],
