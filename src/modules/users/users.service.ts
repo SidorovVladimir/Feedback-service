@@ -11,7 +11,7 @@ import { AuthUserResponse } from '../auth/response/auth-user.response';
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectRepository(User) private readonly usersReposittory: Repository<User>,
+    @InjectRepository(User) private readonly usersRepository: Repository<User>,
     private readonly tokenService: TokenService,
     private readonly configService: ConfigService,
   ) {}
@@ -32,19 +32,19 @@ export class UsersService {
       email: dto.email,
       password: await this.hashPassword(dto.password),
     };
-    await this.usersReposittory.save(user);
+    await this.usersRepository.save(user);
   }
 
   async findUserByEmail(email: string): Promise<User> {
     try {
-      return this.usersReposittory.findOne({ where: { email } });
+      return this.usersRepository.findOne({ where: { email } });
     } catch (e) {
       throw new Error(e);
     }
   }
   async publicUser(email: string): Promise<AuthUserResponse> {
     try {
-      const user = await this.usersReposittory.findOne({
+      const user = await this.usersRepository.findOne({
         where: { email },
         select: {
           id: true,

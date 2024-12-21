@@ -12,7 +12,7 @@ export class Category {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('text')
+  @Column('text', { unique: true })
   name: string;
 
   @OneToMany('Post', 'category')

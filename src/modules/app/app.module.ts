@@ -12,6 +12,9 @@ import { Status } from '../statuses/entities/status.entity';
 import { UsersModule } from '../users/users.module';
 import { TokenModule } from '../token/token.module';
 import { AuthModule } from '../auth/auth.module';
+import { PostsModule } from '../feedback-posts/posts.module';
+import { StatusModule } from '../statuses/status.module';
+import { CategoryModule } from '../categories/category.module';
 
 @Module({
   imports: [
@@ -37,6 +40,9 @@ import { AuthModule } from '../auth/auth.module';
     UsersModule,
     TokenModule,
     AuthModule,
+    PostsModule,
+    StatusModule,
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
