@@ -9,6 +9,9 @@ import { Post } from '../feedback-posts/entities/post.entity';
 import { Vote } from '../votes/entities/vote.entity';
 import { Category } from '../categories/entities/category.entity';
 import { Status } from '../statuses/entities/status.entity';
+import { UsersModule } from '../users/users.module';
+import { TokenModule } from '../token/token.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [
@@ -31,6 +34,9 @@ import { Status } from '../statuses/entities/status.entity';
         synchronize: true,
       }),
     }),
+    UsersModule,
+    TokenModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
